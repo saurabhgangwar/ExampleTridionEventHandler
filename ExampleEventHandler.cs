@@ -9,6 +9,10 @@ using Tridion.ContentManager.Extensibility;
 using Tridion.ContentManager.Extensibility.Events;
 namespace ExampleTridionEventHandler
 {
+    /// <summary>
+    /// This is a example code for a Tridion Event Handler. 
+    ///In this example, an event handler is set on "save" events of components to check if the title of the components starts with a Number
+    /// </summary>
     [TcmExtension("ExampleEventHandler")]
     public class ExampleEventHandler : TcmExtension
     {
@@ -37,11 +41,9 @@ namespace ExampleTridionEventHandler
         /// <param name="args">arguments</param>
         /// <param name="phase">event phase</param>
         private void HandlerForInitiated(Component component, SaveEventArgs args, EventPhases phase)
-        {
-            
+        {   
             //get the component title
             var comptitle = component.Title;
-            //if image filename and component title are not the same, thorow error
             
             if (!Regex.IsMatch(comptitle, @"^\d+"))
             {
